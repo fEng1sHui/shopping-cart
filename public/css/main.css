@@ -1,0 +1,22 @@
+.img-thumbnail {
+	padding: 15px;
+	padding-top: 8px;
+	margin-top: 20px;
+}
+
+.img-thumbnail img {
+	max-height: 150px;
+}
+
+.caption {
+	padding-top: 20px;
+}
+
+.img-thumbnail .description {
+	color: #7f7f7f;
+}
+
+.price {
+	font-weight: bold;
+	font-size: 27px;
+}
