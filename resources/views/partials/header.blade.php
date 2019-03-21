@@ -13,7 +13,8 @@
           User Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#"><i class="fas fa-user"></i> User Accout</a>
+          <a class="dropdown-item" href="{{ route('user.signup') }}"><i class="fas fa-user-plus"></i></i> Signup</a>
+          <a class="dropdown-item" href="#"><i class="fas fa-sign-in-alt"></i> Signin</a>
           <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt"></i> Logout</a>
         </div>
       </li>
