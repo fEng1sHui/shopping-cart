@@ -13,9 +13,13 @@
           User Account
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="{{ route('user.signup') }}"><i class="fas fa-user-plus"></i></i> Signup</a>
-          <a class="dropdown-item" href="{{ route('user.signin') }}"><i class="fas fa-sign-in-alt"></i> Signin</a>
-          <a class="dropdown-item" href="{{ route('user.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          @if(Auth::check())
+            <a class="dropdown-item" href="{{ route('user.profile') }}"><i class="fas fa-user"></i> User Profile</a>
+            <a class="dropdown-item" href="{{ route('user.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          @else
+            <a class="dropdown-item" href="{{ route('user.signup') }}"><i class="fas fa-user-plus"></i> Signup</a>
+            <a class="dropdown-item" href="{{ route('user.signin') }}"><i class="fas fa-sign-in-alt"></i> Signin</a>
+          @endif
         </div>
       </li>
     </ul>
