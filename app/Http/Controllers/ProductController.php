@@ -7,6 +7,8 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
+use Stripe\Charge;
+use Stripe\Stripe;
 
 class ProductController extends Controller
 {
@@ -45,5 +47,23 @@ class ProductController extends Controller
         $cart = new Cart($oldCart);
         $total = $cart->totalPrice;
         return view('shop.checkout', ['total' => $total]);
+    }
+
+    public function postCheckout(Request $request) 
+    {
+        if (!Session::has('cart')) {
+            return redirect()->route('shop.shoppingCart');
+        }
+        $oldCart = Session::get('cart');
+        $cart = new Cart($oldCart);
+
+        Stripe::setApiKey("sk_test_rPwOarKawLMG6XEfVvKKjbim00zSegIyrX");
+
+        $charge = Charge::create([
+            'amount' => 25,
+            'currency' => 'usd',
+            'description' => 'Example charge',
+            'source' => $request->input('stripeToken'),
+        ]);
     }
 }
