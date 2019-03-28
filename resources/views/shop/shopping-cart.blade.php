@@ -15,13 +15,13 @@
 							<strong>{{ $product['item']['title'] }}</strong>
 							<span class="badge badge-success">{{ $product['price'] }}</span>
 							<div class="btn-group">
-							  <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							    Action
-							  </button>
-							  <div class="dropdown-menu">
-							    <a class="dropdown-item" href="#">Reduce by 1</a>
-							    <a class="dropdown-item" href="#">Reduce All</a>
-							  </div>
+								<button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									Action
+								</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#">Reduce by 1</a>
+									<a class="dropdown-item" href="#">Reduce All</a>
+								</div>
 							</div>
 						</li>
 					@endforeach
