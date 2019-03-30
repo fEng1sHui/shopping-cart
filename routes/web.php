@@ -36,6 +36,11 @@ Route::post('/checkout', [
 	'as' => 'checkout'
 ]);
 
+Route::post('/checkout', [
+	'uses' => 'ProductController@postCheckoutSubmit',
+	'as' => 'checkout.submit'
+]);
+
 Route::group(['prefix' => 'user'], function() {
 	Route::get('/signup', [
 		'uses' => 'UserController@getSignup',

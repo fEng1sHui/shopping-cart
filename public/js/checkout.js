@@ -70,7 +70,6 @@
     form.appendChild(hiddenInput);
 
     // Submit the form
-    alert(token.id);
-    // form.submit();
+    form.submit();
   }
 })();

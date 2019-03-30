@@ -9,7 +9,7 @@
         <div class="col-sm-6 col-md-4 col-md-offset-4 col-sm-offset-3">
             <h1>Checkout</h1>
             <h4>Your Total: ${{ $total }}</h4>
-            <form action="" method="POST" id="payment-form">
+            <form action="{{ route('checkout.submit') }}" method="POST" id="payment-form">
                 <div class="form-group">
                     <label for="card-element">Credit Card</label>
                     <div id="card-element">
@@ -20,6 +20,7 @@
                     <div id="card-errors" role="alert"></div>
                 </div>
                 <button type="submit" class="btn btn-success">Submit payment</button>
+                {{ csrf_field() }}
             </form>
         </div>
     </div>

@@ -66,4 +66,9 @@ class ProductController extends Controller
             'source' => $request->input('stripeToken'),
         ]);
     }
+
+    public function postCheckoutSubmit(Request $request) 
+    {
+        dd($request->all());
+    }
 }
