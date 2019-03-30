@@ -10,7 +10,7 @@
   var style = {
     base: {
       color: '#32325d',
-      fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+      fontFamily: '"Raleway", Helvetica, sans-serif',
       fontSmoothing: 'antialiased',
       fontSize: '16px',
       '::placeholder': {
@@ -24,7 +24,10 @@
   };
 
   // Create an instance of the card Element.
-  var card = elements.create('card', {style: style});
+  var card = elements.create('card', {
+    style: style,
+    hidePostalCode: true
+  });
 
   // Add an instance of the card Element into the `card-element` <div>.
   card.mount('#card-element');
@@ -67,6 +70,7 @@
     form.appendChild(hiddenInput);
 
     // Submit the form
-    form.submit();
+    alert(token.id);
+    // form.submit();
   }
 })();
