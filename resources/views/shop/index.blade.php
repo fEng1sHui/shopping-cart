@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
+	@if(Session::has('success_message'))
+		<div class="row">
+			<div class="col-sm-12 col-md-12 col-md-offset-12 col-sm-sm-offset-12">
+				<div id="charge-message" class="alert alert-success">
+					{{ Session::get('success_message') }}
+				</div>
+			</div> 
+		</div>
+	@endif
 	@foreach($products->chunk(3) as $productChunk)
 		<div class="row">
 			@foreach($productChunk as $product)
