@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use Session;
 use Stripe\Charge;
-use Stripe\Stripe;
+use Cartalyst\Stripe\Laravel\Facades\Stripe;
+use Cartalyst\Stripe\Exception\CardErrorException;
+
 
 class ProductController extends Controller
 {
@@ -49,26 +51,48 @@ class ProductController extends Controller
         return view('shop.checkout', ['total' => $total]);
     }
 
-    public function postCheckout(Request $request) 
-    {
-        if (!Session::has('cart')) {
-            return redirect()->route('shop.shoppingCart');
-        }
-        $oldCart = Session::get('cart');
-        $cart = new Cart($oldCart);
+    // public function postCheckout(Request $request) 
+    // {
+    //     if (!Session::has('cart')) {
+    //         return redirect()->route('shop.shoppingCart');
+    //     }
+    //     $oldCart = Session::get('cart');
+    //     $cart = new Cart($oldCart);
 
-        Stripe::setApiKey("sk_test_rPwOarKawLMG6XEfVvKKjbim00zSegIyrX");
+    //     Stripe::setApiKey("sk_test_rPwOarKawLMG6XEfVvKKjbim00zSegIyrX");
 
-        $charge = Charge::create([
-            'amount' => 25,
-            'currency' => 'usd',
-            'description' => 'Example charge',
-            'source' => $request->input('stripeToken'),
-        ]);
-    }
+    //     $charge = Charge::create([
+    //         'amount' => 25,
+    //         'currency' => 'usd',
+    //         'description' => 'Example charge',
+    //         'source' => $request->input('stripeToken'),
+    //     ]);
+    // }
 
     public function postCheckoutSubmit(Request $request) 
     {
-        dd($request->all());
+        // dd($request->all());
+
+        //validation
+
+        try {
+            $charge = Stripe::charges()->create([
+                'amount' => 20,
+                'currency' => 'CAD',
+                'source' => $request->stripeToken,
+                'description' => 'Description goes here',
+                'receipt_email' => $request->email,
+                'metadata' => [
+                    'data1' => 'metadata 1',
+                    'data2' => 'metadata 2',
+                    'data3' => 'metadata 3',
+               ],
+            ]);
+
+            //SUCCESSFUL
+            return back()->with('success_message', 'Thank you! Your payment has been accepted.');
+        } catch (Exception $e) {
+            
+        }
     }
 }

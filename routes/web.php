@@ -31,10 +31,10 @@ Route::get('/checkout', [
 	'as' => 'checkout'
 ]);
 
-Route::post('/checkout', [
-	'uses' => 'ProductController@postCheckout',
-	'as' => 'checkout'
-]);
+// Route::post('/checkout', [
+// 	'uses' => 'ProductController@postCheckout',
+// 	'as' => 'checkout'
+// ]);
 
 Route::post('/checkout', [
 	'uses' => 'ProductController@postCheckoutSubmit',
