@@ -53,25 +53,7 @@ class ProductController extends Controller
         return view('shop.checkout', ['total' => $total]);
     }
 
-    // public function postCheckout(Request $request) 
-    // {
-    //     if (!Session::has('cart')) {
-    //         return redirect()->route('shop.shoppingCart');
-    //     }
-    //     $oldCart = Session::get('cart');
-    //     $cart = new Cart($oldCart);
-
-    //     Stripe::setApiKey("sk_test_rPwOarKawLMG6XEfVvKKjbim00zSegIyrX");
-
-    //     $charge = Charge::create([
-    //         'amount' => 25,
-    //         'currency' => 'usd',
-    //         'description' => 'Example charge',
-    //         'source' => $request->input('stripeToken'),
-    //     ]);
-    // }
-
-    public function postCheckoutSubmit(Request $request) 
+    public function postCheckout(Request $request) 
     {
         //validation
          if (!Session::has('cart')) {

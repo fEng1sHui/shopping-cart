@@ -24,7 +24,7 @@ Checkout
             </ul>
         </div>
         @endif
-        <form action="{{ route('checkout.submit') }}" method="POST" id="payment-form">
+        <form action="{{ route('checkout') }}" method="POST" id="payment-form">
             {{ csrf_field() }}
             <div class="form-group">
                 <label for="email">Email Address</label>
