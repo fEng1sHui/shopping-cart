@@ -25,6 +25,8 @@ Sign Up
 				<button type="submit" class="btn btn-primary">Sign Up</button>
 				{{ csrf_field() }}
 			</form>
+		</br>
+		<p><a href="{{ route('user.signin') }}">Already have an account?</a></p>
 		</div>
 	</div>
 @endsection
